@@ -13,12 +13,12 @@ jobs:
           persist-credentials: false
       - name: Build
         run: |
-          cd projects/hello-world
+          cd projects/now
           yarn
           yarn build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./projects/hello-world/dist
+          publish_dir: ./projects/now
           cname: ${{ secrets.CNAME }}
