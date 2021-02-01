@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - develop
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,12 +13,12 @@ jobs:
           persist-credentials: false
       - name: Build
         run: |
-          cd src/hello-world
+          cd projects/hello-world
           yarn
           yarn build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./src/hello-world/dist
+          publish_dir: ./projects/hello-world/dist
           cname: ${{ secrets.CNAME }}
